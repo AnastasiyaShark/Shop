@@ -4,27 +4,17 @@ package Shop;
 //Работает только с перечислениями и связанными индексами
 //для избежания магических чисел
 public enum Rating {
-    BADLY(1),  //Избегание магических чисел. все константы
-    OK(2),     //Используются внутри перечислений
-    SUPER(3);
-
-    private final int index;
-
-    Rating(int index) {
-        this.index = index;
-    }
-
-    public int getIndex() {
-        return index;
-    }
+    BADLY,  //Избегание магических чисел. все константы
+    OK,     //Используются внутри перечислений
+    SUPER;
 
     public static Rating fromInt(int index) {
         switch (index) {
-            case 1:
+            case 0:
                 return BADLY;
-            case 2:
+            case 1:
                 return OK;
-            case 3:
+            case 2:
                 return SUPER;
             default:
                 return OK;

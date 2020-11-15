@@ -28,14 +28,15 @@ public class Main {
     public static void filter(Warehouse warehouse) {
         Scanner scanner = new Scanner(System.in);
         System.out.printf(" По какому критерию вы хотите отфильтровать товары? (введите номер) %n %d. %s%n %d. %s%n %d. %s%n ",
-                Characteristics.TYPE.getIndex(), Characteristics.TYPE,      //Избегание магических чисел. все константы
-                Characteristics.PRICE.getIndex(), Characteristics.PRICE,    //Используются внутри перечислений
-                Characteristics.RATING.getIndex(), Characteristics.RATING); //
+                Characteristics.TYPE.ordinal(), Characteristics.TYPE,      //Избегание магических чисел. все константы
+                Characteristics.PRICE.ordinal(), Characteristics.PRICE,    //Используются внутри перечислений
+                Characteristics.RATING.ordinal(), Characteristics.RATING); //
         int count = scanner.nextInt();
         Characteristics chosenChar = Characteristics.fromInt(count);
         switch (chosenChar) {
             case TYPE:
-                System.out.printf("Какого типа вывести товары?(введите номер) %n1. %s%n2. %s%n ", Type.BOOK, Type.TOY);
+                System.out.printf("Какого типа вывести товары?(введите номер) %n %d. %s %n %d. %s%n ",
+                        Type.BOOK.ordinal(),Type.BOOK, Type.TOY.ordinal(),Type.TOY);
                 count = scanner.nextInt();
                 Type chosenType = Type.fromInt(count);
                 printArray(warehouse.getAListByType(chosenType));
@@ -47,9 +48,9 @@ public class Main {
                 break;
             case RATING:
                 System.out.printf(" По какому рейтенгу вы хотите отфильтровать товары? (введите номер) %n %d. %s%n %d. %s%n %d. %s%n",
-                        Rating.BADLY.getIndex(), Rating.BADLY,  //Избегание магических чисел. все константы
-                        Rating.OK.getIndex(), Rating.OK,        //Используются внутри перечислений
-                        Rating.SUPER.getIndex(), Rating.SUPER); //
+                        Rating.BADLY.ordinal(), Rating.BADLY,  //Избегание магических чисел. все константы
+                        Rating.OK.ordinal(), Rating.OK,        //Используются внутри перечислений
+                        Rating.SUPER.ordinal(), Rating.SUPER); //
                 count = scanner.nextInt();
                 Rating filterRating = Rating.fromInt(count);
                 printArray(warehouse.getAListOfRating(filterRating));
